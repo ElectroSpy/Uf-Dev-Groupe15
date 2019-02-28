@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1551189556 source:c:\users\marie\desktop\uf c\interface graphique c\main.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	"Fonction.h"
+	"Page.h"
+	"Global.h"
+
+1551015058 c:\users\marie\desktop\uf c\interface graphique c\fonction.h
+
+1551092538 c:\users\marie\desktop\uf c\interface graphique c\page.h
+
+1551015058 c:\users\marie\desktop\uf c\interface graphique c\global.h
+
