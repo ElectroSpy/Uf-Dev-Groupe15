@@ -1,0 +1,163 @@
+drop table Possede;
+drop table Plante_possedee;
+drop table Informations;
+drop table Date;
+drop table Plante;
+drop Table Famille;
+
+create table Famille
+(ID_famille integer not null AUTO_INCREMENT,
+Nom_famille varchar(20) not null,
+Constraint PK_Famille primary key (ID_famille));
+
+create table Plante
+(ID_plante integer not null AUTO_INCREMENT,
+Nom_plante varchar(20) not null,
+Description_plante varchar(200) not null,
+Plantation_plante varchar(20) not null,
+Humidite_plante numeric(1) not null,
+Temperature_plante numeric(1) not null,
+Luminosite_plante numeric(1) not null,
+Floraison_plante varchar(20) not null,
+ID_famille integer not null,
+Constraint PK_Plante primary key (ID_plante),
+Constraint FK_Famille foreign key (ID_famille) references Famille(ID_famille));
+
+create table Date
+(ID_date integer not null AUTO_INCREMENT,
+Jour date not null,
+Constraint PK_Date primary key (ID_Date));
+
+create table Informations
+(ID_information integer not null AUTO_INCREMENT,
+Humidite_plante numeric(4),
+Temperature_plante numeric(2) not null,
+Luminosite_plante varchar(15),
+Constraint PK_Informations primary key (ID_information));
+
+create table Plante_possedee
+(ID_plante_possedee integer not null AUTO_INCREMENT,
+Nom_plante_possedee varchar(10) not null,
+Constraint PK_Plante_possedee primary key (ID_plante_possedee));
+
+create table Possede
+(ID_plante_possedee integer not null AUTO_INCREMENT,
+ID_information integer not null,
+ID_date integer not null,
+ID_famille integer not null,
+Constraint PK_possede primary key (ID_plante_possedee, ID_information, ID_date, ID_famille),
+Constraint FK_Possede_PlantePossedee foreign key (ID_plante_possedee) references Plante_possedee(ID_plante_possedee),
+Constraint FK_Possede_Informations foreign key (ID_information) references Informations(ID_information),
+Constraint FK_Possede_Date foreign key (ID_date) references Date(ID_date),
+Constraint FK_Possede_Famille foreign key (ID_famille) references Famille(ID_famille));
+
+insert into Famille (Nom_famille) values
+('Paeoniacees');
+insert into Famille (Nom_famille) values
+('Rosacees');
+insert into Famille (Nom_famille) values
+('Liliacees');
+insert into Famille (Nom_famille) values
+('Tropaeolacees');
+insert into Famille (Nom_famille) values
+('Iridacees');
+insert into Famille (Nom_famille) values
+('Orchidacees');
+insert into Famille (Nom_famille) values
+('Asparagacees');
+insert into Famille (Nom_famille) values
+('Aracees');
+insert into Famille (Nom_famille) values
+('Caryophyllacees');
+insert into Famille (Nom_famille) values
+('Renonculacees');
+insert into Famille (Nom_famille) values
+('Zingiberacees');
+insert into Famille (Nom_famille) values
+('Begoniacees');
+insert into Famille (Nom_famille) values
+('Amaryllidiacees');
+insert into Famille (Nom_famille) values
+('Theacees');
+insert into Famille (Nom_famille) values
+('Asteracees');
+insert into Famille (Nom_famille) values
+('Geraniacees');
+insert into Famille (Nom_famille) values
+('Fabacees');
+insert into Famille (Nom_famille) values
+('Lamiacees');
+insert into Famille (Nom_famille) values
+('Hydrangeacees');
+insert into Famille (Nom_famille) values
+('Oleacees');
+insert into Famille (Nom_famille) values
+('Mimosacees');
+insert into Famille (Nom_famille) values
+('Euphorbiacees');
+insert into Famille (Nom_famille) values
+('Cactacees');
+insert into Famille (Nom_famille) values
+('Zantedeschia');
+
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Pivoine', 'Plante florale, d exterieur', 'Automne', 3, 5, 5, 'Printemps', 1);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Rosier elliptica', 'Plante florale, epineuse, d exterieur', 'Automne', 3, 5, 7, 'Printemps', 2);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Tulipe', 'Plante a bulbe, d exterieur', 'Printemps', 2, 4, 6, 'Automne', 3);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Capucine', 'Plante grimpante, d exterieur', 'Printemps', 4, 5, 6, 'Automne', 4);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Iris', 'Plante florale a bulbes, d exterieur', 'Ete a mi automne', 5, 5, 5, 'Ete', 5);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Orchidee', 'Plante d interieur, en pot', 'Toute saison', 3, 4, 5, 'Toute saison', 6);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Muguet', 'Petite plante florale', 'Printemps', 4, 4, 3, 'Printemps', 7);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Lys', 'Plante florale a bulbe, d exterieur', 'Automne a printemps', 4, 5, 2, 'Ete', 3);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Oeillet', 'Plante florale, d exterieur', 'Automne ou printemps', 4, 4, 3, 'Ete', 8);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Jacinthe', 'Plante florale a bulbe, d exterieur', 'Hiver', 6, 3, 2, 'Printemps', 9);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Anemone', 'Plante florale a bulbe, d exterieur', 'Automne ou printemps', 3, 7, 6, 'Printemps ou fin ete', 10);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Gingembre sauvage', 'Plante vivace, d exterieur', 'Printemps', 6, 4, 2, 'Fin ete', 11);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Glaieul', 'Plante florale d exterieur', 'Printemps a hiver', 6, 6, 7, 'Ete', 7);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Begonia', 'Plante florale d exterieur', 'Ete a automne', 6, 5, 6, 'Ete', 12);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Jonquille', 'Plante florale jaune, d exterieur', 'Automne', 7, 6, 7, 'Printemps', 13);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Camelia', 'Arbuste a fleurs', 'Automne', 5, 6, 5, 'Hiver', 14);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+( 'Tournesol', 'Grande plante florale jaune', 'Printemps', 3, 6, 7, 'Ete', 15);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Crocus', 'Petites fleurs a bulbe', 'Automne ou printemps', 3, 4, 6, 'Hiver ou ete', 5);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Dahlia', 'Plante florale d exterieur', 'Printemps', 3, 6, 6, 'Ete', 15);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Edelweiss', 'Plante vivace de montagne', 'Printemps', 5, 0, 7, 'Ete', 15);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Geranium', 'Plante florale, vivace, en pot', 'Printemps', 4, 4, 5, 'Ete', 16);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Glycine', 'Plante florale grimpante', 'Printemps ou automne', 5, 6, 6, 'Printemps', 17);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Lavande', 'Plante florale en bouquet', 'Automne', 5, 5, 7, 'Ete', 18);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Hortensia', 'Arbuste a fleur en boules', 'Automne', 4, 4, 4, 'Ete', 19);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Jasmin', 'Arbuste grimpant', 'Printemps', 3, 7, 6, 'Ete', 20);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Lila', 'Arbuste a fleur', 'Automne', 6, 5, 6, 'Printemps', 20);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Mimosa', 'Arbre a fleurs', 'Printemps', 2, 7, 7, 'Hiver', 21);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Poinsettia', 'Arbuste floral d interieur', 'Automne', 6, 6, 6, 'Hiver', 22);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Cactus', 'Arbuste Epineux', 'Toute saison', 8, 2, 8, 'Sans floraison', 23);
+insert into Plante (Nom_plante, Description_plante, Plantation_plante, Humidite_plante, Temperature_plante, Luminosite_plante, Floraison_plante, ID_famille) values
+('Arum', 'Plante florale a bulbe', 'Printemps', 6, 3, 5, 'Ete', 24);
+
